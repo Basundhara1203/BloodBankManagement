@@ -1,0 +1,114 @@
+﻿@model IEnumerable<Blood_Bank_Management.Models.Users>
+<style>
+    #c {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    body {
+        background-image: url("/Content/Images/2.jpg");
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .d {
+        position: center;
+        width: 55%;
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-bottom: 20px;
+        margin: 0 auto;
+        background-color: white;
+        margin-top: 40px;
+        border-radius: 25px;
+        border: 7px solid black;
+    }
+
+    .control-label {
+        float: left;
+    }
+
+    .form-group {
+        position: center;
+        margin: 20px;
+    }
+
+         a {
+            color: white;
+        }
+
+    #c td, #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #c tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #c tr:hover {
+        background-color: #ddd;
+    }
+
+    #c th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #0D804F;
+        color: white;
+    }
+</style>
+<body>
+    <div class="d justify-content-center align-items-center">
+        @{
+            ViewBag.Title = "RegisteredListHosp";
+        }
+
+        <h2>Registered List Hospital</h2>
+
+        
+        <table class="table" id="c">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.RoleUser.RoleName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ConfirmPassword)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoleUser.RoleName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ConfirmPassword)
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" style="color:white;">@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |</button>
+                        <button class="btn btn-primary" style="color:white;">@Html.ActionLink("Details", "Details", new { id = item.Id }) |</button>
+                            <button class="btn btn-primary" style="color:white;"> @Html.ActionLink("Delete", "Delete", new { id = item.Id })</button>
+</td>
+                </tr>
+            }
+
+        </table>
+        </div>
+</body>

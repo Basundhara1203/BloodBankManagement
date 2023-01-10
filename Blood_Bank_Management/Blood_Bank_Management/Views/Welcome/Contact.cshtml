@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/StyleSheet1.css" type="text/css" rel="stylesheet" />
+    <title>Need Blood</title>
+    <style>
+        ul li{
+            display:inline-block;
+        }
+        .card:hover {
+            background-color: #fff;
+            color: #000;
+        }
+    </style>
+
+</head>
+<body class="v">
+
+
+    <header>
+        <div class="main">
+
+            <ul>
+
+
+                <li class="active"><a href="@Url.Action("Dashboard","Welcome")"> Home </a></li>
+
+                <li><a href="@Url.Action("About","Welcome")"> About</a></li>
+                <li><a href="@Url.Action("Contact","Welcome")"> Contact </a></li>
+
+
+
+
+
+
+
+
+            </ul>
+
+        </div>
+        <div class="title">
+
+
+
+            
+        </div>
+</header>
+    <div class="card-deck" style="color:antiquewhite; margin-top:120px;">
+        <div class="card">
+            <img class="card-img-top" src="/Content/Images/mail.jpg" style="width:80px; height:80px;" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Gmail Address</h5>
+                <p class="card-text">blood_info@gmail.com</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="/Content/Images/loc.jpg"   style="width:80px; height:80px;" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Address</h5>
+                <p class="card-text"> 2/35 Hestings Building,M.J Road ,Sealdah, WestBengal </p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="/Content/Images/call.jpg"   style="width:80px; height:80px;" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Contact Number</h5>
+                <p class="card-text">030-900-1800-525</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+

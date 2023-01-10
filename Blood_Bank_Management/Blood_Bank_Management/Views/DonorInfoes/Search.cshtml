@@ -1,0 +1,168 @@
+﻿@model IEnumerable<Blood_Bank_Management.Models.ViewModel1>
+<head>
+    <style>
+        body {
+            background-image: url("/Content/Images/2.jpg");
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+
+
+        .p {
+            position: center;
+            width: 75%;
+            padding-top: 20px;
+            padding-left: 40px;
+            padding-bottom: 20px;
+            margin: 0 auto;
+            background-color: white;
+            margin-top: 40px;
+            border-radius: 25px;
+            border: 2px solid yellow;
+        }
+
+        .d {
+            position: center;
+            width: 85%;
+            padding-top: 20px;
+            padding-left: 30px;
+            padding-bottom: 20px;
+            margin: 0 auto;
+            background-color: white;
+            margin-top: 40px;
+            border-radius: 25px;
+            border: 7px solid black;
+        }
+
+        .control-label {
+            float: left;
+        }
+
+        .form-group {
+            position: center;
+            margin: 20px;
+        }
+
+            .form-group a {
+                color: white;
+            }
+        a {
+            color: white;
+        }
+
+        #c td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #c tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #c tr:hover {
+            background-color: #ddd;
+        }
+
+        #c th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #0D804F;
+            color: white;
+        }
+        #c {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            padding-right:10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="d justify-content-center align-items-center">
+        @{
+            ViewBag.Title = "Index";
+
+        }
+
+
+        <h2>Search </h2>
+
+        @using (Html.BeginForm("Search", "DonorInfoes", FormMethod.Get))
+        {
+            //the following are search options
+
+            <b> Search Option: </b>@Html.RadioButton("option", "Hospital") <text>Hospital</text> @Html.RadioButton("option", "Donor") <text> Donor </text>
+            <span>     </span> <text>BloodType </text> @Html.TextBox("search1")<text>City </text>@Html.TextBox("search2")
+            <input type="submit" name="submit" value="Search" />
+        }
+        @if (Model.Count() != 0)
+        {
+
+
+            <table class="table p" id="c">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.hospinfo.HospName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.hospinfo.ContactNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.hospinfo.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.hospinfo.Address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.hospinfo.City)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.bloodstock.Stock)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.bloodstock.BloodType)
+                    </th>
+
+                </tr>
+                @if (Model != null)
+                {
+
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.hospinfo.HospName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.hospinfo.ContactNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.hospinfo.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.hospinfo.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.hospinfo.City)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.bloodstock.Stock)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.bloodstock.BloodType)
+                            </td>
+
+
+                        </tr>
+                    }
+                }
+            </table>
+        }
+    </div>
+        
+</body>

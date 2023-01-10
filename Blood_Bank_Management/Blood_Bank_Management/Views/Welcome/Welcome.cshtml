@@ -1,0 +1,22 @@
+﻿<style>
+    
+
+    body {
+        background-image: url("/Content/Images/1.jpg");
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+
+</style>
+<body>
+    <div class="d justify-content-center align-items-center">
+        @{
+            ViewBag.Title = "Welcome";
+        }
+
+        <h1 style="color:antiquewhite;">Welcome</h1>
+        <li class="active"><a href="@Url.Action("Create","DonorInfoes")"> Create </a></li>
+    </div>
+    </body>

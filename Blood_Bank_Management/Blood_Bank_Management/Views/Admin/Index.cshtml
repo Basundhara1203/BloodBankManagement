@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Blood_Bank_Management.Models.Users>
+<style>
+    #c {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    #k{
+        text-decoration-color:white;
+    }
+    body {
+        background-image: url("/Content/Images/2.jpg");
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .d {
+        position: center;
+        width: 55%;
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-bottom: 20px;
+        margin: 0 auto;
+        background-color: white;
+        margin-top: 40px;
+        border-radius: 25px;
+        border: 7px solid black;
+    }
+
+    .control-label {
+        float: left;
+    }
+
+    .form-group {
+        position: center;
+        margin: 20px;
+    }
+
+         a {
+            color: white;
+        }
+
+    #c td, #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #c tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #c tr:hover {
+        background-color: #ddd;
+    }
+
+    #c th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #0D804F;
+        color: white;
+    }
+</style>
+<body>
+    <div class="d justify-content-center align-items-center">
+        @{
+            ViewBag.Title = "Index";
+        }
+
+        <h2>List</h2>
+
+        
+        <table class="table" id="c">
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+
+                <th></th>
+            </tr>
+            @try
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+
+                        <td id="k">
+                            <button class="btn btn-primary" style="color:white;">@Html.ActionLink("Register Or Edit Details", "CreateAsAdmin", new { id = item.Id }) |</button>
+
+                            <button class="btn btn-primary" style="color:white;"> @Html.ActionLink("Delete", "DeleteUsers", new { id = item.Id })</button>
+                        </td>
+                    </tr>
+                }
+            }
+            catch (Exception ex)
+            { }
+        </table>
+</body>

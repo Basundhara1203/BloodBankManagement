@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .jj {
+            position: absolute;
+            bottom: 0;
+            color: white;
+        }
+            #z{
+                  text-align:right;
+
+              }
+              #l{
+                  text-align:right;
+              }
+        .logo img {
+            float: left;
+            width: 35px;
+           
+            
+        }
+        
+    </style>
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="logo" style="float:left;">
+                    <img src="/Content/Images/logo.jpg" />
+                </div>
+                @Html.ActionLink("Need-Blood", "Dashboard", "Welcome", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="container-fluid">
+
+                        <ul class="nav navbar-nav">
+                            @if (User.IsInRole("Hospital/Organisation"))
+                            {
+                                truYumContext ds = new truYumContext();
+                                var u = ds.Users.Where(x => x.UserName == User.Identity.Name).FirstOrDefault();
+                                var v = ds.HospInfos.Where(x => x.UserId == u.Id).FirstOrDefault();
+                                if (v == null)
+                                {
+
+                                    <li>@Html.ActionLink("Add Hospital Details", "Create", "HospInfoes")</li>
+                                }
+                                else
+                                {
+
+                                    <li>@Html.ActionLink("Edit Hospital Details", "Edit", "HospInfoes")</li>
+                                }
+
+                                <li>@Html.ActionLink("Add To Stock", "AddToStock", "HospInfoes")</li>
+                                <li>@Html.ActionLink("Blood Stock Details", "ShowOwn", "HospInfoes")</li>
+
+
+
+                            }
+
+                            @if (User.IsInRole("Admin"))
+                            {
+                                //
+                                //<li>@Html.ActionLink("Add Hospital", "Create", "HospInfoes")</li>
+                                <li>@Html.ActionLink("Register Hospital", "RegisterHospFromAdmin", "Admin")</li>
+                                <li>@Html.ActionLink("Registered Hospitals", "Index", "Admin")</li>
+                                <li>@Html.ActionLink("Hospital Details", "IndexList", "Admin")</li>
+                                <li>@Html.ActionLink("Donor List", "ShowDonor", "Admin")</li>
+
+                            }
+                            @if (User.IsInRole("User/Donor"))
+                            {
+                                truYumContext ds = new truYumContext();
+                                var u = ds.Users.Where(x => x.UserName == User.Identity.Name).FirstOrDefault();
+                                var v = ds.DonorInfos.Where(x => x.UserId == u.Id).FirstOrDefault();
+                                if (v == null)
+                                {
+                                    <li>@Html.ActionLink("Search", "Search", "DonorInfoes")</li>
+                                    <li>@Html.ActionLink("Register As Donor", "Create", "DonorInfoes")</li>
+                                }
+                                else
+                                {
+                                    <li>@Html.ActionLink("Search", "Search", "DonorInfoes")</li>
+                                    <li>@Html.ActionLink("Registered As Donor", "DetailsDonor", "DonorInfoes")</li>
+                                }
+
+                            }
+
+
+                          </ul>
+
+
+
+                            <ul class="nav navbar-nav navbar-right">
+
+                            <li><a>Dear-@User.Identity.Name</a></li>
+                            <li>@Html.ActionLink("Log Out", "Logout", "Account")</li>
+                        </ul>
+                        </div>
+                        }
+                    </div>
+                </div>
+    </div>
+    <!--<img src="~/Content/Images/2.jpg" />-->
+    <div class="container body-content">
+        @RenderBody()
+        
+        
+        <footer class="zz">
+            <div class="jj">
+                <p>&copy; @DateTime.Now.Year -Blood-Bank-Management Application</p>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

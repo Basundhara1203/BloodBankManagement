@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Blood_Bank_Management.Models.ViewModel1>
+<style>
+    #c {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    body {
+        background-image: url("/Content/Images/2.jpg");
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .d {
+        position: center;
+        width: 55%;
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-bottom: 20px;
+        margin: 0 auto;
+        background-color: white;
+        margin-top: 40px;
+        border-radius: 25px;
+        border: 7px solid black;
+    }
+
+    .control-label {
+        float: left;
+    }
+
+    .form-group {
+        position: center;
+        margin: 20px;
+    }
+
+      a {
+            color: white;
+        }
+
+    #c td, #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #c tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #c tr:hover {
+        background-color: #ddd;
+    }
+
+    #c th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #0D804F;
+        color: white;
+    }
+</style>
+<body>
+    <div class="d justify-content-center align-items-center">
+        @{
+            ViewBag.Title = "ShowOwn";
+        }
+
+
+        <center><h2>Blood Bank Stock</h2>
+                </center>
+                    
+
+
+
+
+
+                    @foreach (var item in Model)
+                    {
+                        <center>
+                            <h1>@item.hospinfo.HospName  , @item.hospinfo.City</h1>
+
+                        </center>
+
+
+
+
+                        break;
+                    }
+                    <div class="container-fluid py-4">
+                        <h4 class="text-center text-uppercase"></h4>
+                        <table class="table table-striped table-bordered" id="c">
+                            <thead class="bg-dark text-white">
+
+
+                                <tr>
+                                    <th>BloodType</th>
+                                    <th>Stock Availability</th>
+                                    <th>Action</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.bloodstock.BloodType</td>
+                                        <td>@item.bloodstock.Stock</td>
+
+                                        <td>
+                                            <button class="btn btn-primary" style="color:white;">@Html.ActionLink("Edit", "EditStock", new { id = item.bloodstock.Id }) |</button>
+                                            <button class="btn btn-primary" style="color:white;">@Html.ActionLink("Remove", "DeleteStock", new { id = item.bloodstock.Id }) |</button>
+
+
+                                        </td>
+
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+</div>
+        </body>
+    

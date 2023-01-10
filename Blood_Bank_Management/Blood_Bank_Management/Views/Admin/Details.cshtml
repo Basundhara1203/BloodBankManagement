@@ -1,0 +1,142 @@
+﻿@model Blood_Bank_Management.Models.HospInfo
+<head>
+    <style>
+        body {
+            background-image: url("/Content/Images/2.jpg");
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        table {
+            background-image: url("/Content/Images/2.jpg");
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .p {
+            position: center;
+            width: 55%;
+            padding-top: 20px;
+            padding-left: 40px;
+            padding-bottom: 20px;
+            margin: 0 auto;
+            background-color: white;
+            margin-top: 40px;
+            border-radius: 25px;
+            border: 2px solid yellow;
+        }
+
+        .d {
+            position: center;
+            width: 75%;
+            padding-top: 20px;
+            padding-left: 40px;
+            padding-bottom: 20px;
+            margin: 0 auto;
+            background-color: white;
+            margin-top: 40px;
+            border-radius: 25px;
+            border: 7px solid black;
+        }
+
+        .control-label {
+            float: left;
+        }
+
+        .form-group {
+            position: center;
+            margin: 20px;
+        }
+
+            .form-group a {
+                color: white;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="d justify-content-center align-items-center">
+        @{
+            ViewBag.Title = "Details";
+        }
+
+        <h2>Details</h2>
+
+        <div>
+            <h4>HospInfo</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Users.UserName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Users.UserName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.HospName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.HospName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.RegNo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.RegNo)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Type)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Type)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.City)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.City)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ContactNo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ContactNo)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.HospId }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+</div>
+</body>
